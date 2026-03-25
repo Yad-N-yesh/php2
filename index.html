@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP Practical Programs</title>
+    <style>
+        body {
+            font-family: Consolas, monospace;
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 20px;
+        }
+        h1 {
+            color: #00ffcc;
+        }
+        .code-block {
+            background: #2d2d2d;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<h1>PHP Practical Programs (Q1 - Q10)</h1>
+
+<div class="code-block">
+Q1
+
+&lt;html&gt;
+&lt;form action=prac.php method=GET&gt;
+
+Enter name:
+&lt;input type=text name=name required&gt;&lt;br&gt;&lt;br&gt;
+
+Select the languages:&lt;br&gt;
+&lt;select name='lang[]' multiple required&gt;
+    &lt;option value="" &gt;select&lt;/option&gt;
+    &lt;option value=C &gt;C&lt;/option&gt;
+    &lt;option value=C++ &gt;C++&lt;/option&gt;
+    &lt;option value=python&gt;python&lt;/option&gt;
+    &lt;option value=java &gt;java&lt;/option&gt;
+    &lt;option value=php &gt;php&lt;/option&gt;
+&lt;/select&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;input type=submit&gt;&lt;br&gt;
+
+&lt;/form&gt;
+&lt;/html&gt;
+
+&lt;?php
+$sname=$_GET['name'];
+$lang=$_GET['lang'];
+
+echo "Name:$sname &lt;br&gt;";
+echo "The languages selected:&lt;br&gt;";
+
+foreach($lang as $v)
+{
+    echo "$v &lt;br&gt;";
+}
+?&gt;
+</div>
+
+<div class="code-block">
+Q2
+
+&lt;html&gt;
+&lt;form action=prac.php method=GET&gt;
+
+Select the option:&lt;br&gt;
+
+&lt;input type=radio name=r value=1 required&gt; Insert element&lt;br&gt;
+&lt;input type=radio name=r value=2&gt; Delete element&lt;br&gt;
+&lt;input type=radio name=r value=3&gt; Display stack&lt;br&gt;
+
+&lt;input type=submit&gt;
+&lt;/form&gt;
+&lt;/html&gt;
+
+&lt;?php
+$r=$_GET['r'];
+$a=array(1,2,3,4,5);
+
+switch($r)
+{
+    case 1:
+        array_push($a,6);
+        print_r($a);
+        break;
+
+    case 2:
+        array_pop($a);
+        print_r($a);
+        break;
+
+    case 3:
+        print_r($a);
+        break;
+}
+?&gt;
+</div>
+
+<div class="code-block">
+Q3
+
+Sorting operations on arrays (indexed & associative)
+- sort(), rsort()
+- asort(), arsort()
+- ksort(), krsort()
+- array_merge()
+</div>
+
+<div class="code-block">
+Q4
+
+Array operations:
+- Union
+- Intersection
+- Difference
+- Remove odd numbers
+- Multisort arrays
+</div>
+
+<div class="code-block">
+Q5
+
+String functions:
+strpos(), stripos(), strrpos(), strripos(),
+strstr(), stristr(), strchr()
+</div>
+
+<div class="code-block">
+Q6
+
+Form:
+- Input message
+- Select font
+- Select background color
+
+PHP:
+- Displays styled message using user input
+</div>
+
+<div class="code-block">
+Q7
+
+Functions:
+- Swap by value
+- Swap by reference
+</div>
+
+<div class="code-block">
+Q8
+
+Program:
+Factorial using loop
+</div>
+
+<div class="code-block">
+Q9
+
+Array operations:
+- Check positive/negative
+- Calculate average
+- Calculate sum
+</div>
+
+<div class="code-block">
+Q10
+
+Array operations:
+- Display elements with keys
+- Size of array
+- Delete element
+- Reverse array
+</div>
+
+</body>
+</html>
