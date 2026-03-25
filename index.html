@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PHP Practical Programs</title>
+    <title>PHP Practical Full Programs</title>
     <style>
         body {
             font-family: Consolas, monospace;
@@ -16,7 +16,7 @@
         .box {
             background: #1e293b;
             padding: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-radius: 10px;
         }
         pre {
@@ -40,12 +40,12 @@ Enter name:
 
 Select the languages:&lt;br&gt;
 &lt;select name='lang[]' multiple required&gt;
-&lt;option value="" &gt;select&lt;/option&gt;
-&lt;option value=C &gt;C&lt;/option&gt;
-&lt;option value=C++ &gt;C++&lt;/option&gt;
-&lt;option value=python&gt;python&lt;/option&gt;
-&lt;option value=java &gt;java&lt;/option&gt;
-&lt;option value=php &gt;php&lt;/option&gt;
+    &lt;option value="" &gt;select&lt;/option&gt;
+    &lt;option value=C &gt;C&lt;/option&gt;
+    &lt;option value=C++ &gt;C++&lt;/option&gt;
+    &lt;option value=python&gt;python&lt;/option&gt;
+    &lt;option value=java &gt;java&lt;/option&gt;
+    &lt;option value=php &gt;php&lt;/option&gt;
 &lt;/select&gt;&lt;br&gt;&lt;br&gt;
 
 &lt;input type=submit&gt;&lt;br&gt;
@@ -54,6 +54,7 @@ Select the languages:&lt;br&gt;
 &lt;/html&gt;
 
 &lt;?php
+
 $sname=$_GET['name'];
 $lang=$_GET['lang'];
 
@@ -64,6 +65,7 @@ foreach($lang as $v)
 {
     echo "$v &lt;br&gt;";
 }
+
 ?&gt;
 </pre>
 </div>
@@ -76,9 +78,9 @@ foreach($lang as $v)
 
 Select the option:&lt;br&gt;
 
-&lt;input type=radio name=r value=1 required&gt; Insert element&lt;br&gt;
-&lt;input type=radio name=r value=2&gt; Delete element&lt;br&gt;
-&lt;input type=radio name=r value=3&gt; Display stack&lt;br&gt;
+&lt;input type=radio name=r value=1 required &gt;1)Insert an element into the Stack &lt;br&gt;
+&lt;input type=radio name=r value=2 &gt;2)Delete an element from the Stack &lt;br&gt;
+&lt;input type=radio name=r value=3 &gt;3)Display the contents of the Stack &lt;br&gt;
 
 &lt;input type=submit&gt;
 
@@ -86,25 +88,30 @@ Select the option:&lt;br&gt;
 &lt;/html&gt;
 
 &lt;?php 
+
 $r=$_GET['r'];
 $a=array(1,2,3,4,5);
 
 switch($r)
 {
-case 1:
-array_push($a,6);
-print_r($a);
-break;
+    case 1:
+        array_push($a,6);
+        echo "Element inserted in array:&lt;br&gt;";
+        print_r($a); 
+        break;
 
-case 2:
-array_pop($a);
-print_r($a);
-break;
+    case 2:
+        array_pop($a);
+        echo "Element removed from array:&lt;br&gt;";
+        print_r($a); 
+        break;
 
-case 3:
-print_r($a);
-break;
+    case 3:
+        echo "Contents displayed :&lt;br&gt;";
+        print_r($a); 
+        break;
 }
+
 ?&gt;
 </pre>
 </div>
@@ -112,21 +119,64 @@ break;
 <div class="box">
 <h2>Q3</h2>
 <pre>
+&lt;html&gt;
+
+&lt;form action=prac.php method=GET&gt;
+
+&lt;input type=radio name=r value=1 required&gt;1)Sort an indexed array in ascending and descending order&lt;br&gt;
+&lt;input type=radio name=r value=2&gt;2)Sort an associative array in ascending and descending order by value&lt;br&gt;
+&lt;input type=radio name=r value=3&gt;3)Sort an associative array in ascending and descending order by key&lt;br&gt;
+&lt;input type=radio name=r value=4&gt;4)merge 2 arrays&lt;br&gt;
+&lt;input type=submit&gt;
+
+&lt;/form&gt;
+&lt;/html&gt;
+
 &lt;?php
+
+$r=$_GET['r'];
 $a=array(1,6,3,4,9,2,8);
-$b=array('name'=>'shruti','age'=>21,'course'=>'BCA');
+$b=array('name'=&gt;'shruti','age'=&gt;21,'course'=&gt;'BCA');
 
-sort($a);
-rsort($a);
+switch($r)
+{
+    case 1:
+        echo "Sorting an indexed array in asc:&lt;br&gt; ";
+        sort($a);
+        print_r($a);
 
-asort($b);
-arsort($b);
+        echo "&lt;br&gt;Sorting an indexed array in desc:&lt;br&gt; ";
+        rsort($a);
+        print_r($a);
+        break;
+    
+    case 2:
+        echo "Sorting an asso array in asc by value:&lt;br&gt; ";
+        asort($b);
+        print_r($b);
+    
+        echo "&lt;br&gt;Sorting an asso array in desc by value:&lt;br&gt;";
+        arsort($b);
+        print_r($b);
+        break;
 
-ksort($b);
-krsort($b);
+    case 3:
+        echo "Sorting an asso array in asc by key:&lt;br&gt; ";
+        ksort($b);
+        print_r($b);
 
-$m=array_merge($a,$b);
-print_r($m);
+        echo "&lt;br&gt;Sorting an asso array in desc by key:&lt;br&gt;";
+        krsort($b);
+        print_r($b);
+        break;
+
+    case 4:
+        $m=array_merge($a,$b);
+        echo "Array merged:&lt;br&gt;";
+        print_r($m);
+        break;
+}
+
 ?&gt;
 </pre>
 </div>
@@ -135,16 +185,57 @@ print_r($m);
 <h2>Q4</h2>
 <pre>
 &lt;?php
+
+$r=$_GET['r'];
 $a=array(1,2,3,4,5);
 $b=array(10,7,3,5,9,8);
 
-$union=array_unique(array_merge($a,$b));
-$intersection=array_intersect($a,$b);
-$difference=array_diff($a,$b);
+switch($r)
+{
+    case 1:
+        $union=array_unique(array_merge($a,$b));
+        $intersection=array_intersect($a,$b);
+        $difference=array_diff($a,$b);
 
-print_r($union);
-print_r($intersection);
-print_r($difference);
+        echo "&lt;br&gt;Union:&lt;br&gt;";
+        print_r($union);
+
+        echo "&lt;br&gt;Intersection:&lt;br&gt;";
+        print_r($intersection);
+
+        echo "&lt;br&gt;Difference:&lt;br&gt;";
+        print_r($difference);
+        break; 
+
+    case 2:
+        echo "Array after removing odd numbers :&lt;br&gt;";
+        $even=array_filter($a,function($num)
+        {
+            return $num%2==0;
+        });
+        print_r($even);
+        break;
+
+    case 3:
+        $n=array('c','d','a','e','b');
+        $m=array(4,2,5,1,3);
+
+        echo "&lt;br&gt;Array1:&lt;br&gt;";
+        print_r($n);
+
+        echo "&lt;br&gt;Array2:&lt;br&gt;";
+        print_r($m);
+
+        array_multisort($n,$m);
+
+        echo "&lt;br&gt;Sorted names:&lt;br&gt;";
+        print_r($n);
+
+        echo "&lt;br&gt;Sorted numbers according to names:&lt;br&gt;";
+        print_r($m);
+        break;
+}
+
 ?&gt;
 </pre>
 </div>
@@ -153,15 +244,17 @@ print_r($difference);
 <h2>Q5</h2>
 <pre>
 &lt;?php
+
 $a="hello World this is shruti";
 
-echo strpos($a,'this');
-echo stripos($a,'This');
-echo strrpos($a,'shruti');
-echo strripos($a,'Shruti');
-echo strstr($a,'World');
-echo stristr($a,'world');
-echo strchr($a,'World');
+echo "Strpos:".strpos($a,'this')."&lt;br&gt;";
+echo "stripos:".stripos($a,'This')."&lt;br&gt;";
+echo "strrpos:".strrpos($a,'shruti')."&lt;br&gt;";
+echo "strripos:".strripos($a,'Shruti')."&lt;br&gt;";
+echo "strstr:".strstr($a,'World')."&lt;br&gt;";
+echo "stristr:".stristr($a,'world')."&lt;br&gt;";
+echo "strchr:".strchr($a,'World')."&lt;br&gt;";
+
 ?&gt;
 </pre>
 </div>
@@ -170,28 +263,48 @@ echo strchr($a,'World');
 <h2>Q6</h2>
 <pre>
 &lt;html&gt;
+
 &lt;form action=prac.php method=GET&gt;
 
 Enter message:
 &lt;input type=text name=msg required&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;select name=font&gt;
+Select font:
+&lt;select name=font required&gt;
 &lt;option value='arial'&gt;arial&lt;/option&gt;
 &lt;option value='times new roman'&gt;times new roman&lt;/option&gt;
-&lt;/select&gt;
+&lt;option value='courier'&gt;courier&lt;/option&gt;
+&lt;option value='verdana'&gt;verdana&lt;/option&gt;
+&lt;/select&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;select name=bg&gt;
+Select background color:
+&lt;select name=bg required&gt;
 &lt;option value='red'&gt;red&lt;/option&gt;
 &lt;option value='blue'&gt;blue&lt;/option&gt;
-&lt;/select&gt;
+&lt;option value='green'&gt;green&lt;/option&gt;
+&lt;option value='black'&gt;black&lt;/option&gt;
+&lt;/select&gt;&lt;br&gt;&lt;br&gt;
 
 &lt;input type=submit&gt;
 &lt;/form&gt;
 &lt;/html&gt;
 
 &lt;?php
-echo "&lt;body style='background-color:$bg'&gt;";
-echo "&lt;h2&gt;$msg&lt;/h2&gt;";
+
+$msg=$_GET['msg'];
+$font=$_GET['font'];
+$bg=$_GET['bg'];
+
+echo "
+&lt;html&gt;
+&lt;body style='background-color:$bg'&gt;
+
+&lt;h2 style='font-family:$font ; text-align:center'; &gt;$msg&lt;/h2&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+";
+
 ?&gt;
 </pre>
 </div>
@@ -200,19 +313,33 @@ echo "&lt;h2&gt;$msg&lt;/h2&gt;";
 <h2>Q7</h2>
 <pre>
 &lt;?php
+
 function swapbyvalue($a,$b)
 {
-$s=$a;
-$a=$b;
-$b=$s;
+    echo "First number:$a and second is:$b&lt;br&gt;";
+    $s=$a;
+    $a=$b;
+    $b=$s;
+
+    echo "First value:$a and second is:$b&lt;br&gt;&lt;br&gt;";
 }
 
 function swapbyreference(&$x,&$y)
 {
-$s=$x;
-$x=$y;
-$y=$s;
+    echo "First number:$x and second is:$y&lt;br&gt;";
+    $s=$x;
+    $x=$y;
+    $y=$s;
+
+    echo "First value:$x and second is:$y";
 }
+
+$m=10;
+$n=20;
+
+swapbyvalue($m,$n);
+swapbyreference($m,$n);
+
 ?&gt;
 </pre>
 </div>
@@ -221,13 +348,15 @@ $y=$s;
 <h2>Q8</h2>
 <pre>
 &lt;?php
+
 $a=5;
 $fact=1;
 
 for($i=1;$i&lt;=$a;$i++)
-$fact=$fact*$i;
+    $fact=$fact*$i;
 
 echo $fact;
+
 ?&gt;
 </pre>
 </div>
@@ -235,14 +364,58 @@ echo $fact;
 <div class="box">
 <h2>Q9</h2>
 <pre>
+&lt;html&gt;
+
+&lt;form action=prac.php method=GET&gt;
+
+&lt;input type=radio name=r value=1 required&gt;1)Check positive/negative &lt;br&gt;
+&lt;input type=radio name=r value=2&gt;2)Average &lt;br&gt;
+&lt;input type=radio name=r value=3&gt;3)Sum&lt;br&gt;
+
+&lt;input type=submit&gt;
+
+&lt;/form&gt;
+&lt;/html&gt;
+
 &lt;?php
+
+$r=$_GET['r'];
 $a=array(1,2,3,4,5);
 
-foreach($a as $v)
+$c=count($a);
+$avg=0;
+$sum=0;
+
+switch($r)
 {
-if($v&gt;0)
-echo "$v is positive";
+    case 1:
+        for($i=0;$i&lt;$c;$i++)
+        {
+            if($a[$i]&gt;0)
+                echo "$a[$i] is positive &lt;br&gt;";
+            else
+                echo "$a[$i] is negative &lt;br&gt;";
+        } 
+        break;
+
+    case 2:
+        for($i=0;$i&lt;$c;$i++)
+        {
+            $sum=$sum+$a[$i];
+        }
+        $avg=$sum/$c;
+        echo "Average:$avg &lt;br&gt;";
+        break;
+
+    case 3:
+        for($i=0;$i&lt;$c;$i++)
+        {
+            $sum=$sum+$a[$i];    
+        }
+        echo "Sum:$sum&lt;br&gt;";
+        break;
 }
+
 ?&gt;
 </pre>
 </div>
@@ -250,11 +423,47 @@ echo "$v is positive";
 <div class="box">
 <h2>Q10</h2>
 <pre>
-&lt;?php
-$a=array('name'=>'shruti','age'=>21);
+&lt;html&gt;
 
-foreach($a as $k=&gt;$v)
-echo $k."=&gt;".$v;
+&lt;form action=prac.php method=GET&gt;
+
+&lt;input type=radio name=r value=1 required&gt;Display elements with keys&lt;br&gt;
+&lt;input type=radio name=r value=2&gt;Size of array&lt;br&gt;
+&lt;input type=radio name=r value=3&gt;Delete element&lt;br&gt;
+&lt;input type=radio name=r value=4&gt;Reverse array&lt;br&gt;
+
+&lt;input type=submit&gt;
+
+&lt;/form&gt;
+&lt;/html&gt;
+
+&lt;?php
+
+$r=$_GET['r'];
+$a=array('name'=&gt;'shruti','age'=&gt;21,'course'=&gt;'bca','city'=&gt;'pune');
+
+switch($r)
+{
+    case 1:
+        foreach($a as $k=&gt;$v)
+            echo $k."=&gt;".$v."&lt;br&gt;";
+        break; 
+
+    case 2:
+        echo sizeof($a);
+        break;
+
+    case 3:
+        array_splice($a,2,1);
+        print_r($a);
+        break;
+
+    case 4:
+        $re=array_reverse($a);
+        print_r($re);
+        break;
+}
+
 ?&gt;
 </pre>
 </div>
