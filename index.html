@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>PHP Practical Programs</title>
     <style>
         body {
             font-family: Consolas, monospace;
-            background-color: #1e1e1e;
-            color: #dcdcdc;
+            background-color: #0f172a;
+            color: #e2e8f0;
             padding: 20px;
         }
         h1 {
-            color: #00ffcc;
+            text-align: center;
+            color: #38bdf8;
         }
-        .code-block {
-            background: #2d2d2d;
+        .box {
+            background: #1e293b;
             padding: 15px;
             margin-bottom: 20px;
             border-radius: 10px;
-            overflow-x: auto;
+        }
+        pre {
             white-space: pre-wrap;
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
 
-<h1>PHP Practical Programs (Q1 - Q10)</h1>
+<h1>PHP Practical Programs (Q1–Q10)</h1>
 
-<div class="code-block">
-Q1
-
+<div class="box">
+<h2>Q1</h2>
+<pre>
 &lt;html&gt;
 &lt;form action=prac.php method=GET&gt;
 
@@ -38,12 +40,12 @@ Enter name:
 
 Select the languages:&lt;br&gt;
 &lt;select name='lang[]' multiple required&gt;
-    &lt;option value="" &gt;select&lt;/option&gt;
-    &lt;option value=C &gt;C&lt;/option&gt;
-    &lt;option value=C++ &gt;C++&lt;/option&gt;
-    &lt;option value=python&gt;python&lt;/option&gt;
-    &lt;option value=java &gt;java&lt;/option&gt;
-    &lt;option value=php &gt;php&lt;/option&gt;
+&lt;option value="" &gt;select&lt;/option&gt;
+&lt;option value=C &gt;C&lt;/option&gt;
+&lt;option value=C++ &gt;C++&lt;/option&gt;
+&lt;option value=python&gt;python&lt;/option&gt;
+&lt;option value=java &gt;java&lt;/option&gt;
+&lt;option value=php &gt;php&lt;/option&gt;
 &lt;/select&gt;&lt;br&gt;&lt;br&gt;
 
 &lt;input type=submit&gt;&lt;br&gt;
@@ -63,11 +65,12 @@ foreach($lang as $v)
     echo "$v &lt;br&gt;";
 }
 ?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q2
-
+<div class="box">
+<h2>Q2</h2>
+<pre>
 &lt;html&gt;
 &lt;form action=prac.php method=GET&gt;
 
@@ -78,105 +81,182 @@ Select the option:&lt;br&gt;
 &lt;input type=radio name=r value=3&gt; Display stack&lt;br&gt;
 
 &lt;input type=submit&gt;
+
 &lt;/form&gt;
 &lt;/html&gt;
 
-&lt;?php
+&lt;?php 
 $r=$_GET['r'];
 $a=array(1,2,3,4,5);
 
 switch($r)
 {
-    case 1:
-        array_push($a,6);
-        print_r($a);
-        break;
+case 1:
+array_push($a,6);
+print_r($a);
+break;
 
-    case 2:
-        array_pop($a);
-        print_r($a);
-        break;
+case 2:
+array_pop($a);
+print_r($a);
+break;
 
-    case 3:
-        print_r($a);
-        break;
+case 3:
+print_r($a);
+break;
 }
 ?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q3
+<div class="box">
+<h2>Q3</h2>
+<pre>
+&lt;?php
+$a=array(1,6,3,4,9,2,8);
+$b=array('name'=>'shruti','age'=>21,'course'=>'BCA');
 
-Sorting operations on arrays (indexed & associative)
-- sort(), rsort()
-- asort(), arsort()
-- ksort(), krsort()
-- array_merge()
+sort($a);
+rsort($a);
+
+asort($b);
+arsort($b);
+
+ksort($b);
+krsort($b);
+
+$m=array_merge($a,$b);
+print_r($m);
+?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q4
+<div class="box">
+<h2>Q4</h2>
+<pre>
+&lt;?php
+$a=array(1,2,3,4,5);
+$b=array(10,7,3,5,9,8);
 
-Array operations:
-- Union
-- Intersection
-- Difference
-- Remove odd numbers
-- Multisort arrays
+$union=array_unique(array_merge($a,$b));
+$intersection=array_intersect($a,$b);
+$difference=array_diff($a,$b);
+
+print_r($union);
+print_r($intersection);
+print_r($difference);
+?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q5
+<div class="box">
+<h2>Q5</h2>
+<pre>
+&lt;?php
+$a="hello World this is shruti";
 
-String functions:
-strpos(), stripos(), strrpos(), strripos(),
-strstr(), stristr(), strchr()
+echo strpos($a,'this');
+echo stripos($a,'This');
+echo strrpos($a,'shruti');
+echo strripos($a,'Shruti');
+echo strstr($a,'World');
+echo stristr($a,'world');
+echo strchr($a,'World');
+?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q6
+<div class="box">
+<h2>Q6</h2>
+<pre>
+&lt;html&gt;
+&lt;form action=prac.php method=GET&gt;
 
-Form:
-- Input message
-- Select font
-- Select background color
+Enter message:
+&lt;input type=text name=msg required&gt;&lt;br&gt;&lt;br&gt;
 
-PHP:
-- Displays styled message using user input
+&lt;select name=font&gt;
+&lt;option value='arial'&gt;arial&lt;/option&gt;
+&lt;option value='times new roman'&gt;times new roman&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;select name=bg&gt;
+&lt;option value='red'&gt;red&lt;/option&gt;
+&lt;option value='blue'&gt;blue&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;input type=submit&gt;
+&lt;/form&gt;
+&lt;/html&gt;
+
+&lt;?php
+echo "&lt;body style='background-color:$bg'&gt;";
+echo "&lt;h2&gt;$msg&lt;/h2&gt;";
+?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q7
+<div class="box">
+<h2>Q7</h2>
+<pre>
+&lt;?php
+function swapbyvalue($a,$b)
+{
+$s=$a;
+$a=$b;
+$b=$s;
+}
 
-Functions:
-- Swap by value
-- Swap by reference
+function swapbyreference(&$x,&$y)
+{
+$s=$x;
+$x=$y;
+$y=$s;
+}
+?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q8
+<div class="box">
+<h2>Q8</h2>
+<pre>
+&lt;?php
+$a=5;
+$fact=1;
 
-Program:
-Factorial using loop
+for($i=1;$i&lt;=$a;$i++)
+$fact=$fact*$i;
+
+echo $fact;
+?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q9
+<div class="box">
+<h2>Q9</h2>
+<pre>
+&lt;?php
+$a=array(1,2,3,4,5);
 
-Array operations:
-- Check positive/negative
-- Calculate average
-- Calculate sum
+foreach($a as $v)
+{
+if($v&gt;0)
+echo "$v is positive";
+}
+?&gt;
+</pre>
 </div>
 
-<div class="code-block">
-Q10
+<div class="box">
+<h2>Q10</h2>
+<pre>
+&lt;?php
+$a=array('name'=>'shruti','age'=>21);
 
-Array operations:
-- Display elements with keys
-- Size of array
-- Delete element
-- Reverse array
+foreach($a as $k=&gt;$v)
+echo $k."=&gt;".$v;
+?&gt;
+</pre>
 </div>
 
 </body>
